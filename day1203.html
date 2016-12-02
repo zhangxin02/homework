@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>js第一周日作业</title>
+</head>
+
+<body>
+<script>
+    //数组的求和  求平均数
+	/*var arr=[1,2,3,4,5,6,7,8,9,10];
+	var getSum=function(){
+		var sum=0;
+		for(var i in arr){
+			sum+=arr[i];
+		}
+		document.write("和为："+sum+"平均数为："+sum/arr.length);
+	}
+	getSum();*/
+	
+
+/*    //数组的排序
+	var arr=[4,9,1,4,5,3,7,10,9,8];
+	function upSort(){		
+		for(var i in arr){
+			for(var j=0;j<arr.length-1;j++){
+				if(arr[i]<arr[j]){
+					var temp=0;
+					temp=arr[j];
+					arr[j]=arr[i];
+					arr[i]=temp;					
+				}
+		}
+	}
+		document.write(arr);
+}
+upSort();*/
+
+	
+	
+
+/*    //数组的反转 [1,4,7]  [7,4,1]	
+	var arr=[1,4,7,3];
+	//arr.reverse();//直接调用函数也可以实现反转	
+	var arr2=[];	
+	var arrayRever=function (arr){
+		for(var i=0;i<arr.length;i++){
+			arr2[i]=arr[arr.length-1-i];
+		}
+		return arr2;
+	}
+	document.write(arrayRever(arr));
+	*/
+
+    /*//数组的插入  [1,5,7,10]  把4插入到数组中
+	var arr=[1,4,7,3];	
+	document.write("原始数组："+arr+"<br/>");
+	arr.push(4);
+	document.write("使用push："+arr+"<br/>");
+	arr.splice(2,0,"zx");
+	document.write("使用splice："+arr);*/
+
+   // 数组去除重复项	
+	var quchong=function(arr){		
+		var arr2=new Array();
+		arr2[0]=arr[0];
+		for(var i in arr.sort()){
+			if(arr[i]!=arr2[arr2.length-1]){
+				arr2.push(arr[i]);	
+			}
+		}
+		document.write(arr2);
+	}
+	var arr=[1,4,4,7,3,4];
+	quchong(arr);
+
+
+   /* //随机点名
+     var arr = ["徐翠","宋威","陈贝贝","万婷"];
+	 document.write(arr[parseInt(Math.random()*arr.length)]);*/
+	
+
+    //预习字符串  时间   BOM  DOM  事件  ajax  面向对象   php  mysql 
+
+</script>
+
+</body>
+</html>

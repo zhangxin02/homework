@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>day1130作业</title>
+<script>
+document.write("*************乘法表*************<br/><br/>");
+for(var i=1;i<10;i++){
+	for(var j=1;j<=i;j++){
+		document.write(j+"*"+i+"="+i*j+" ");	
+	}
+	document.write("<br/>");
+}
+
+document.write("<br/><br/>");
+document.write("*************正三角形*************<br/><br/>");
+
+for(var i=0;i<4;i++){
+	for(var j=0;j<=i;j++){ 
+		document.write(" * ");
+	}
+	document.write("<br/>");
+}
+
+document.write("<br/><br/>");
+document.write("*************等腰三角形*************<br/><br/>");
+
+for(var i=0;i<10;i++)
+{
+	 for(var d=10; d>i; d--){
+	  document.write("　");  
+	 }
+	 for(var e=0; e<i*2+1; e++){
+	  document.write(" * ");
+	 }
+	 document.write("<br/>");
+}
+document.write("<br/><br/>");
+document.write("*************菱形*************<br/><br/>");
+
+for(var i=0;i<10;i++)
+{
+	 for(var e=10; e>i; e--){
+	  document.write("　");  
+	 }
+	 for(var e=0; e<i*2+1; e++){
+		/* document.write("口");
+		 for(var x=0;x<e*2+1;x++){
+		 	document.write("　");  
+		 }*/
+		 
+	  document.write("口");
+	 }
+	 document.write("<br/>");
+}
+for(var i=9;i>0;i--)
+{ 
+	 for(var e=10; e>=i; e--){
+	  document.write("　");  
+	 }
+	for(var e=0; e<i*2-1; e++){
+	  document.write("口");
+	 }
+	 document.write("<br/>");
+}
+
+
+document.write("<br/><br/>");
+document.write("*************水仙花*************<br/><br/>");
+
+for(var i=100;i<=999;i++){
+	var b=parseInt(i/100);
+	var s=parseInt(i%100/10);
+	var g=parseInt(i%10);
+	if(Math.pow(b,3)+Math.pow(s,3)+Math.pow(g,3)==i){
+		document.write(i+" ");
+	}
+}
+
+document.write("<br/><br/>");
+document.write("*************芝麻重量*************<br/><br/>");
+var count=0;
+for(var i=0;i<64;i++){
+	count+=Math.pow(2,i);
+}
+document.write("芝麻重量"+count*0.00001+"Kg");
+
+
+
+document.write("<br/><br/>");
+document.write("*************弹起次数*************<br/><br/>");
+
+var count=0;
+var x=0;
+for(var i=0.1;i<=5;i++){
+	i+=i*0.3;
+	count++;
+}
+document.write("弹起次数："+count);
+
+
+document.write("<br/><br/>");
+document.write("*************输出100—200之间的所有素数*************<br/><br/>");
+
+//素数只能被1和它本身整除的数
+for(var i=100;i<=200;i++){
+	var b=true;
+	for(var x=2;x<i;x++){
+		if(i%x==0){//没有余数，能整除
+			b=false;
+			break;
+		}
+	}
+if(b){
+	document.write(x+" ");
+	}
+	
+}
+document.write("<br/><br/>");
+document.write("*************输出100—200之间的所有素数*************<br/><br/>");
+
+var num=2.1777;
+document.write(Math.round(num*100)/100);
+
+</script>
+</head>
+
+<body>
+</body>
+</html>
