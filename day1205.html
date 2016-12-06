@@ -35,9 +35,9 @@ document.write(arr);
 	var arr = [1, 3, 5, 7, 9];
     //如何把4按照指定顺序的插入到数组中
 	//方法一，可以直接将数字插入到数据中，然后排序
-	/*arr.push(4);
+/*	arr.push(4);
 	for(var i=0;i<arr.length;i++){
-		for(var j=0;j<arr.length-1;j++){
+		for(var j=i+1;j<arr.length;j++){
 			if(arr[i]<arr[j]){
 				temp=arr[i];
 				arr[i]=arr[j];
@@ -79,29 +79,168 @@ document.write(arr);
 		arr[i]=arr[arr.length-1-i];
 		arr[arr.length-1-i]=temp;
 	}
-	document.write(arr);
+	//document.write(arr);
 	
 	
-	//递归题目 排列组合
+/*	//递归题目 排列组合
 function pailie(arr){
   if(arr.length==1){//只有一个排序
     return arr;
   }else if(arr.length==2){//两个排序
-    return [''+arr[0]+arr[1],''+arr[1]+arr[0]];
+    return [arr[0]+arr[1],arr[1]+arr[0]];
   }else{
      var tmp = [];
      for(var j=0;j< arr.length;j++){
-       var pre = arr.splice(j,1);//取出arr[j]
-       var m = pailie(arr);//递归排列arr[0],arr[1],...,arr[j-1],arr[j+1],...,arr[n]
-       arr.splice(j,0,pre);//将arr[j]放入数组，保持原来的位置
+	//一定要注意arr.splice(j,1)[0]为什么加入一个【0】，提高了性能。splice返回的是一个数组
+       var pre = arr.splice(j,1)[0];//取出arr[j]
+	   
+       var m = pailie(arr);//递归排列arr[0],arr[1],...,arr[j-1],arr[j+1],...,arr[n]       
        for(var i=0;i< m.length;i++){
-         tmp.push(arr[j]+m[i]);//将arr[j]组合起来
+         tmp.push(pre+m[i]);//将arr[j]组合起来
        }
+	   //操作完成后对数据进行复原,在进行下一轮取值
+	   arr.splice(j,0,pre);//将arr[j]放入数组，保持原来的位置
      }
      return tmp;
   }
  }
- document.write("['a','b','c','d'] => "+pailie(['a','b','c','d'])+'<br/>');
+ var arr=["a","b","c","d","e"];
+ document.write("['a','b','c','d'] => "+pailie(arr)+'<br/>');*/
+ 
+ 
+ 
+ //使用递归实现阶乘
+/*var jie=function (n){
+		if(n==1)
+			return 1;
+		else
+			return n*jie(n-1);
+	}
+	alert(jie(4));*/
+
+/*var sum=1;
+for(var i=1;i<5;i++){
+	sum*=i;
+	}
+	alert(sum);*/
+	
+	
+/*var arr=["a","b","c","d","e","f","g","h"];
+function fn(arr){
+	if(arr.length==2){
+		return [arr[0]+arr[1],arr[1]+arr[0]];
+		}
+		else{
+			var temp=[];
+			for(var i=0;i<arr.length;i++){
+				var num=arr.splice(i,1)[0];
+				var list1=fn(arr);
+				for(var j=0;j<list1.length;j++){
+					temp.push(num+list1[j]);
+					}
+					arr.splice(i,0,num);
+				}
+				return temp;
+			}
+	}
+document.write(fn(arr));*/
+
+/*var temp=[];
+for(var i=65;i<65+26;i++){
+	temp.push(String.fromCharCode(i));	
+}
+for(var i=97;i<97+26;i++){
+	temp.push(String.fromCharCode(i));	
+}
+for(var i=0;i<=9;i++){
+	temp.push(i);	
+}
+//document.write(temp);
+
+var str="2zx？";
+//alert(str.length);
+
+for(var i=0;i<str.length;i++){
+	
+}*/
+
+/*var str="qq教育qqqqqqqft教育";
+var count=0;
+for(var i=0;i<str.length;i++){
+	var index=str.indexOf("教育",i);
+	if(index==i){
+		count++;
+	}
+}
+document.write(count);*/
+
+
+/*var str="aaaabbbcccddd";
+var strs="";
+for(var i=0;i<str.length;i++){
+	if(strs.indexOf(str.charAt(i))<0){
+		strs+=str.charAt(i);
+	}
+}
+alert(strs)*/
+
+/*var arr=[11,12,11,22,33];
+var temp=[];
+for(var i in arr){
+	if(temp.indexOf(arr[i])<0){
+		temp.push(arr[i]);
+	}	
+}
+document.write(temp)*/
+
+/*var str="aaabbbccc";
+var code=str.charAt(0);
+var count=0;
+var strs="";
+for(var i=0;i<str.length;i++){
+	var index=str.indexOf(code,i);
+	if(index==i){
+		count++;
+		if(i==str.length-1){
+			strs+=code+count;
+		}	
+	}else{
+		strs+=code+count;
+		code=str.charAt(i);
+		count=1;
+	}	
+}
+document.write(strs);*/
+
+/*var str=" dsfsd ";
+var index=str.indexOf(" ");
+var lastindex=str.lastIndexOf(" ");
+alert(str.substring(index+1,lastindex));
+alert(str.length);
+alert(str.substring(index+1,lastindex).length);*/
+
+/*var tempstr="";
+for(var i=0;i<str.length;i++){
+	var code=str.charAt(i);
+	for(var j=i,sum=0;j<str.length;j++){
+		if(str.charAt(j)==code){
+			sum++;	
+		}		
+	}
+	tempstr+=code+sum;
+}
+document.write(tempstr)*/
+
+
+
+/*for(var i=0;i<str.length;i++){
+	if(str.charAt(i)==str.charAt(i+1)){
+		str.split(i+1,1);
+		i--;
+	}
+}
+document.write(str);*/
+
 
 </script>
 </body>
