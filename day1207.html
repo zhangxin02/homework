@@ -8,6 +8,7 @@
 <body>
 <input type="button" value="开始" id="btn"/>
 <span id="result">
+
 </span>
 <script>
 var timer;
@@ -86,11 +87,11 @@ var rTimeBypre=function(pre,date){
 		return year+pre+month+pre+day;
 	}	
 }
-//result.innerHTML=rTimeBypre('/',new Date());
+//result.innerHTML=rTimeBypre('*',new Date());
 
 
-var endDate=new Date();//到期时间
-endDate.setMonth(11);
+/*var endDate=new Date();//到期时间
+endDate.setMonth(10);
 endDate.setDate(31);
 endDate.setHours(23);
 endDate.setSeconds(59);
@@ -105,13 +106,22 @@ var downTime=function(){
 	var second=parseInt((getMissTime%(60*60))/60)<=9?"0"+parseInt((getMissTime%(60*60))/60):parseInt((getMissTime%(60*60))/60);
 	var minute=getMissTime%60<=9?"0"+getMissTime%60:getMissTime%60;		
 	
-	result.innerHTML="距离结束时间【"+rTimeBypre('-',endDate)+"】还有："+(day==0?hour+"时":day+"天")+second+"分"+minute+"秒";	
+	if(getMissTime<=0){
+		result.innerHTML="<span style='color:red;'>【活动结束】</span>"
+	}else{
+		result.innerHTML="距离结束时间【"+rTimeBypre('-',endDate)+"】还有："+(day==0?hour+"时":day+"天")+second+"分"+minute+"秒";
+	}	
 }
 downTime();
 setInterval(downTime,1000);
 
 
-
+//让定时器达到延时器的效果，只执行一次
+var oneInterval=function(){
+	alert("setInterval只让你执行一次");
+	clearInterval(timer);
+}
+timer=setInterval(oneInterval,1000);*/
 </script>
 </body>
 </html>
