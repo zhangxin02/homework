@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<input type="button" value="开始" id="btn"/>
+<span id="result">
+</span>
+<script>
+var timer;
+/*var num=0;
+var result=document.getElementById("result");
+var btn=document.getElementById("btn");
+btn.onclick=function(){
+	if(this.value=="开始"){
+		this.value="结束";
+		timer=setInterval(function(){
+		num++;
+		var hour=parseInt(num/(60*60))<=9?"0"+parseInt(num/(60*60)):parseInt(num/(60*60));
+		var second=parseInt((num%(60*60))/60)<=9?"0"+parseInt((num%(60*60))/60):parseInt((num%(60*60))/60);
+		var minute=num%60<=9?"0"+num%60:num%60;		
+		result.innerHTML=(hour==0?"":hour+"时")+(second==0?"":second+"分")+minute+"秒";	
+		
+	},1000);		
+	}else{
+		this.value="开始";
+		clearInterval(timer);
+	}	
+}
+*/
+
+//*******************************************************************************************
+var result=document.getElementById("result");
+var weeklist=["星期天","星期一","星期二","星期三","星期四","星期五","星期六"]
+/*var showTime=function(){
+	var date=new Date();
+	var year=date.getFullYear();//年
+	var month=date.getMonth()+1;//月 0-11
+	var day=date.getDate();//日
+	
+	var hour=date.getHours();//时
+	var minutes=date.getMinutes();//分
+	var seconds=date.getSeconds();//秒
+	
+	var week=date.getDay();//星期	
+	result.innerHTML=year+"年"+month+"月"+day+"月"+hour+"时"+minutes+"分"+seconds+"秒"+weeklist[week];
+}
+showTime();//先执行一次因为定时器会延迟1秒后才执行
+setInterval(showTime,1000)*/
+
+
+//***********************************************************************************************
+/*var showTime=function(){
+	var date=new Date();
+	var hour=date.getHours()<=9?"0"+date.getHours():String(date.getHours());//时,转成字符串，因为Number类型没有chartAt
+	var minutes=date.getMinutes()<=9?"0"+date.getMinutes():String(date.getMinutes());//分
+	var seconds=date.getSeconds()<=9?"0"+date.getSeconds():String(date.getSeconds());//秒
+	
+	result.innerHTML="<img src='img/"+hour.charAt(0)+".png'/><img src='img/"+hour.charAt(1)+".png'/>:<img src='img/"+minutes.charAt(0)+".png'/><img src='img/"+minutes.charAt(1)+".png'/>:<img src='img/"+seconds.charAt(0)+".png'/><img src='img/"+seconds.charAt(1)+".png'/>";
+	
+}
+showTime();
+timer=setInterval(showTime,1000);
+*/
+
+//传入秒数，返回小时，分钟，秒数
+var tTimeBySec=function(num){
+	var hour=parseInt(num/(60*60))<=9?"0"+parseInt(num/(60*60)):parseInt(num/(60*60));
+	var second=parseInt((num%(60*60))/60)<=9?"0"+parseInt((num%(60*60))/60):parseInt((num%(60*60))/60);
+	var minute=num%60<=9?"0"+num%60:num%60;		
+	return (hour==0?"":hour+"时")+(second==0?"":second+"分")+minute+"秒"; 
+}
+
+//输入字符按照输入的字符将日期按格式显示
+var rTimeBypre=function(pre,date){
+	date=new Date();
+	var year=date.getFullYear();//年
+	var month=date.getMonth()+1;//月 0-11
+	var day=date.getDate();//日
+	if(pre==""){
+		return year+"年"+month+"月"+day+"日";
+	}else{
+		return year+pre+month+pre+day;
+	}	
+}
+//result.innerHTML=rTimeBypre('/',new Date());
+
+
+var endDate=new Date();//到期时间
+endDate.setMonth(11);
+endDate.setDate(31);
+endDate.setHours(23);
+endDate.setSeconds(59);
+endDate.setMinutes(59);
+var downTime=function(){
+	var startTime=new Date();//当前时间
+	//(endDate-startTime)计算出来的结果是毫秒数
+	//直接将其转换成秒来计算
+	var getMissTime=parseInt((endDate-startTime)/1000);	
+	var day=parseInt(getMissTime/(24*3600));	
+	var hour=parseInt(getMissTime/(60*60))<=9?"0"+parseInt(getMissTime/(60*60)):parseInt(getMissTime/(60*60));
+	var second=parseInt((getMissTime%(60*60))/60)<=9?"0"+parseInt((getMissTime%(60*60))/60):parseInt((getMissTime%(60*60))/60);
+	var minute=getMissTime%60<=9?"0"+getMissTime%60:getMissTime%60;		
+	
+	result.innerHTML="距离结束时间【"+rTimeBypre('-',endDate)+"】还有："+(day==0?hour+"时":day+"天")+second+"分"+minute+"秒";	
+}
+downTime();
+setInterval(downTime,1000);
+
+
+
+</script>
+</body>
+</html>
