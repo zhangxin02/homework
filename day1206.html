@@ -187,14 +187,15 @@ for(var i=0;i<str.length;i++){
 	var index=str.indexOf(code,i);// 查找元素的索引	
 	if(index==i){
 		count++;
-		if(i==str.length-1){
-			tempstr+=code+count;
-		}
+		
 	}else{
 		tempstr+=code+count;//统计已经寻找过的元素
 		code=str.charAt(i);	
 		count=1;//注意此时为什么=1；此时位置下标已经到达b的位置，已经出现一次，当在一次进入循环的时候就已经从后一位开始
 	}
+	if(i==str.length-1){
+			tempstr+=code+count;
+		}
 }
 alert(tempstr);*/
 
