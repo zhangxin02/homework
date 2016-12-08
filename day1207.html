@@ -91,7 +91,7 @@ var rTimeBypre=function(pre,date){
 
 
 /*var endDate=new Date();//到期时间
-endDate.setMonth(10);
+endDate.setMonth(11);
 endDate.setDate(31);
 endDate.setHours(23);
 endDate.setSeconds(59);
@@ -113,9 +113,48 @@ var downTime=function(){
 	}	
 }
 downTime();
-setInterval(downTime,1000);
+setInterval(downTime,1000);*/
 
 
+/*//****************************提高性能的方式**********************************
+var endDate=new Date();//到期时间
+endDate.setMonth(11);
+endDate.setDate(31);
+endDate.setHours(23);
+endDate.setSeconds(59);
+endDate.setMinutes(59);
+var startTime=new Date();//当前时间
+//(endDate-startTime)计算出来的结果是毫秒数
+//直接将其转换成秒来计算
+var getMissTime=parseInt((endDate-startTime)/1000);	
+var downTime=function(){
+	//getMissTime--每次执行的时候，就已经减掉一次，所以显示的时候就会始终差一秒，因此先显示后在进行自减操作
+	var day=parseInt(getMissTime/(24*3600));	
+	var hour=parseInt((getMissTime%(24*60*60))/(60*60))<=9?"0"+parseInt((getMissTime%(24*60*60))/(60*60)):parseInt((getMissTime%(24*60*60))/(60*60));
+	var second=parseInt((getMissTime%(60*60))/60)<=9?"0"+parseInt((getMissTime%(60*60))/60):parseInt((getMissTime%(60*60))/60);
+	var minute=getMissTime%60<=9?"0"+getMissTime%60:getMissTime%60;
+	if(getMissTime<=0){
+		result.innerHTML="<span style='color:red;'>【活动结束】</span>"
+	}else{
+		result.innerHTML="距离结束时间【"+rTimeBypre('-',endDate)+"】还有："+day+"天"+hour+"时"+second+"分"+minute+"秒";
+	}	
+	getMissTime--;
+}
+downTime();
+setInterval(downTime,1000);*/
+
+
+
+
+/*var endDate=new Date(2016,11,12);//到期时间YYYY,MM-1,DD,显示时分秒
+alert(endDate);*/
+
+
+
+
+
+
+/*
 //让定时器达到延时器的效果，只执行一次
 var oneInterval=function(){
 	alert("setInterval只让你执行一次");
